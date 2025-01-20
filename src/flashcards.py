@@ -64,6 +64,7 @@ def main():
     parser.add_argument("filename", type=str, help="The filename of the flashcards")
     parser.add_argument("--author", type=str, help="The author of the flashcards", required=False, default="")
     parser.add_argument("--title", type=str, help="The title of the flashcards", required=False, default="Flashcards")
+    parser.add_argument("--output", type=str, help="The output filename", required=False, default="output.tex")
     
     args = parser.parse_args()
     
@@ -71,13 +72,14 @@ def main():
     with open(os.path.join(os.path.dirname(__file__), "assets", "tex", "empty.tex"), "r") as file:
         template = file.read()
     
-    with open("output.tex", "w") as file:
+    with open(args.output, "w") as file:
         # Find and replace the placeholders in the template - AUTHOR, TITLE, CONTENT
         template = template.replace("AUTHOR", args.author)
         template = template.replace("TITLE", args.title)
         template = template.replace("CONTENT", flashcards)
         
         file.write(template)
+    
     
 if __name__ == "__main__":
     main()

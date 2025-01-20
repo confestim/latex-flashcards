@@ -31,3 +31,8 @@ You will get a latex file `output.tex` with flashcards in it! You just have to c
 sudo pacman -S latex-base latex-extra
 ```
 
+## Optional parameters
+- `--author`: Author of the flashcards
+- `--title`: Title of the flashcards
+- `--output`: Output file name
+
