@@ -1,5 +1,6 @@
 import argparse
 import json
+import os
 
 def validate_format(flashcards:dict) -> bool:
     # format: [{"question": "What is the capital of France?", "answer": "Paris"}]
@@ -67,7 +68,7 @@ def main():
     args = parser.parse_args()
     
     flashcards = parse_flashcards(args.filename)
-    with open("assets/tex/empty.tex", "r") as file:
+    with open(os.path.join(os.path.dirname(__file__), "..", "templates", "empty.tex"), "r") as file:
         template = file.read()
     
     with open("output.tex", "w") as file:
